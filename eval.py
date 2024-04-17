@@ -61,7 +61,16 @@ if __name__ == '__main__':
                           dropout=False)
 
     save_dict = torch.load('models/swingnet_1800.pth.tar')
-    model.load_state_dict(save_dict['model_state_dict'])
+    state_dict = save_dict['model_state_dict']
+
+    # Adjust the keys
+    new_state_dict = {}
+    for key, value in state_dict.items():
+      new_key = key.replace("classifier.", "classifier.1.")  # Adjusting keys
+      new_state_dict[new_key] = value
+
+    # Load the adjusted state dict
+    model.load_state_dict(new_state_dict)
     model.cuda()
     model.eval()
     PCE = eval(model, split, seq_length, n_cpu, True)
