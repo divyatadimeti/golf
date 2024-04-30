@@ -1,7 +1,6 @@
 # Golf Swing Phase Detection
 
-This repository extends the original GolfDB with modifications and human pose estimation to enhance golf swing phase detection. It includes experiments for baseline models, dimming, and pose estimation.
-Much of the dataloading, training, and model code is adapted from McNally et. al's GolfDB repository. 
+This repository adapts code from McNally et. al's original GolfDB repository with modifications and human pose estimation to enhance golf swing phase detection. It includes experiments for baseline models, dimming, and pose estimation.
 
 Citation: McNally, W., Vats, K., Pinto, T., Dulhanty, C., McPhee, J., & Wong, A. (2019). GolfDB: A Video Database for Golf Swing Sequencing. In *The IEEE Conference on Computer Vision and Pattern Recognition (CVPR) Workshops* (pp. pages). IEEE.
 
