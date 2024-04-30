@@ -13,7 +13,7 @@ class DimUpperHalf(object):
         images, labels = sample['images'], sample['labels']
         c, h, w = images.shape[1], images.shape[2], images.shape[3]
         # Apply dimming to the upper half of each frame
-        images[:, :, :h//2, :] *= 0.5  # Reduce the brightness by half
+        images[:, :, h//2:, :] *= 0.5  # Reduce the brightness by half
         return {'images': images, 'labels': labels}
 
 class ToTensor(object):

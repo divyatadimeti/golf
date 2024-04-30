@@ -6,6 +6,7 @@ from dataloader import GolfDB, ToTensor, Normalize, DimUpperHalf
 import torch.nn.functional as F
 import numpy as np
 from util import correct_preds
+import sys
 
 def eval(model, split, seq_length, n_cpu, disp):
     # Adjust the transform sequence to include the DimUpperHalf
@@ -60,7 +61,7 @@ if __name__ == '__main__':
                           bidirectional=True,
                           dropout=False)
 
-    save_dict = torch.load('models/swingnet_dimmed.pth.tar')
+    save_dict = torch.load('models/swingnet_dimmed_lower.pth.tar')
     state_dict = save_dict['model_state_dict']
 
     # Adjust the keys in the state dict
@@ -71,7 +72,7 @@ if __name__ == '__main__':
     model.eval()
     
     # Redirecting print outputs to a file
-    with open('evaluation_results_original.txt', 'w') as file:
+    with open('evaluation_results_dimmed_lower.txt', 'w') as file:
         original_stdout = sys.stdout  # Save a reference to the original standard output
         sys.stdout = file  # Change the standard output to the file we created.
 
@@ -80,5 +81,5 @@ if __name__ == '__main__':
 
         sys.stdout = original_stdout  # Reset the standard output to its original value
 
-    print(f'Evaluation complete. Results saved to "evaluation_results_original.txt".')
+    print(f'Evaluation complete. Results saved to "evaluation_results_dimmed_lower.txt".')
 
